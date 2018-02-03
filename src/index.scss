@@ -1,0 +1,23 @@
+@import './styles/reset.scss';
+@import './styles/flexbox.scss';
+
+html {
+  height: 100%;
+  min-height: 100%;
+  width: 100%;
+}
+
+body {
+  height: 100%;
+  margin: 0 auto;
+  min-height: 100%;
+  width: 100%;
+  font-family: sans-serif;
+  font-size: 16px;
+}
+
+#root {
+  height: 100%;
+  min-height: 100%;
+  width: 100%;
+}

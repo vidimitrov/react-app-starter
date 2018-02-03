@@ -1,5 +1,113 @@
-body {
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+  border: 0;
+  font: inherit;
+  font-size: 100%;
   margin: 0;
   padding: 0;
+  vertical-align: baseline; }
+
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
+  display: block; }
+
+body {
+  line-height: 1; }
+
+ol, ul {
+  list-style: none; }
+
+blockquote, q {
+  quotes: none; }
+
+blockquote::before, blockquote::after {
+  content: none; }
+
+q::before, q::after {
+  content: none; }
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0; }
+
+.flex {
+  display: flex; }
+  .flex.cell {
+    flex: 1; }
+  .flex.equal-sizing > * {
+    flex-basis: 0;
+    flex-grow: 1; }
+  .flex.flex-column {
+    flex-direction: column; }
+  .flex.flex-column-reverse {
+    flex-direction: column-reverse; }
+  .flex.flex-column.top, .flex.flex-column-reverse.top {
+    align-content: flex-start; }
+  .flex.flex-column.bottom, .flex.flex-column-reverse.bottom {
+    align-content: flex-end; }
+  .flex.flex-column.vertical-center, .flex.flex-column-reverse.vertical-center {
+    align-content: center; }
+  .flex.flex-column.space-between, .flex.flex-column-reverse.space-between {
+    align-content: space-between; }
+  .flex.flex-column.space-around, .flex.flex-column-reverse.space-around {
+    align-content: space-around; }
+  .flex.flex-row {
+    flex-direction: row; }
+  .flex.flex-row-reverse {
+    flex-direction: row-reverse; }
+  .flex.flex-row.wrap, .flex.flex-row-reverse.wrap {
+    flex-flow: row wrap; }
+  .flex.flex-row.top, .flex.flex-row-reverse.top {
+    align-items: flex-start; }
+  .flex.flex-row.bottom, .flex.flex-row-reverse.bottom {
+    align-items: flex-end; }
+  .flex.flex-row.vertical-center, .flex.flex-row-reverse.vertical-center {
+    align-items: center; }
+  .flex.flex-row.baseline, .flex.flex-row-reverse.baseline {
+    align-items: baseline; }
+  .flex.flex-row.stretch, .flex.flex-row-reverse.stretch {
+    align-items: stretch; }
+  .flex.start {
+    justify-content: flex-start; }
+  .flex.end {
+    justify-content: flex-end; }
+  .flex.center {
+    justify-content: center; }
+  .flex.space-between {
+    justify-content: space-between; }
+  .flex.space-around {
+    justify-content: space-around; }
+
+.flex-1 {
+  flex: 1; }
+
+.flex-2 {
+  flex: 2; }
+
+.flex-3 {
+  flex: 3; }
+
+.flex-4 {
+  flex: 4; }
+
+.flex-5 {
+  flex: 5; }
+
+.flex-6 {
+  flex: 6; }
+
+html {
+  height: 100%;
+  min-height: 100%;
+  width: 100%; }
+
+body {
+  height: 100%;
+  margin: 0 auto;
+  min-height: 100%;
+  width: 100%;
   font-family: sans-serif;
-}
+  font-size: 16px; }
+
+#root {
+  height: 100%;
+  min-height: 100%;
+  width: 100%; }
