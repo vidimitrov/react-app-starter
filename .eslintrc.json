@@ -11,7 +11,9 @@
         "it": false,
         "before": false,
         "beforeEach": false,
-        "after": false
+        "after": false,
+        "test": false,
+        "expect": false
     },
     "rules": {
         "react/jsx-filename-extension": 0
