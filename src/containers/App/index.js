@@ -1,8 +1,7 @@
 import React from 'react';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import AppBar from 'material-ui/AppBar';
-import List from 'material-ui/List/List';
-import ListItem from 'material-ui/List/ListItem';
+import List from './components/List';
 import './app.css';
 
 /**
@@ -16,6 +15,12 @@ import './app.css';
  * 6. For each of the items show a details view on click
  */
 
+const items = [{
+  name: 'Item 1',
+}, {
+  name: 'Item 2',
+}];
+
 const App = () => (
   <MuiThemeProvider>
     <div className="app">
@@ -23,11 +28,7 @@ const App = () => (
         title="React Starter"
         iconClassNameRight="muidocs-icon-navigation-expand-more"
       />
-      <List>
-        <ListItem primaryText="Item 1" />
-        <ListItem primaryText="Item 2" />
-        <ListItem primaryText="Item 3" />
-      </List>
+      <List items={items} />
     </div>
   </MuiThemeProvider>
 );
