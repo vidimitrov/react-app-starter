@@ -16,6 +16,7 @@
         "expect": false
     },
     "rules": {
-        "react/jsx-filename-extension": 0
+        "react/jsx-filename-extension": 0,
+        "function-paren-newline": 0
     }
 }
