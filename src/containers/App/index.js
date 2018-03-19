@@ -1,7 +1,7 @@
 import React from 'react';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import AppBar from 'material-ui/AppBar';
-import List from './components/List';
+import List from '../../components/list';
 import './app.css';
 
 /**
@@ -16,8 +16,10 @@ import './app.css';
  */
 
 const items = [{
+  id: 1,
   name: 'Item 1',
 }, {
+  id: 2,
   name: 'Item 2',
 }];
 
