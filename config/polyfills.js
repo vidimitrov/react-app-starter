@@ -1,4 +1,4 @@
-'use strict';
+/* eslint no-undef: 0 */
 
 if (typeof Promise === 'undefined') {
   // Rejection tracking prevents a common issue where React gets into an

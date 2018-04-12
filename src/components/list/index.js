@@ -3,9 +3,9 @@ import PropTypes from 'prop-types';
 import List from 'material-ui/List/List';
 import ListItem from 'material-ui/List/ListItem';
 
-const ListComponent = ({ items }) => (
+const ListComponent = ({items}) => (
   <List>
-    {items.map(item => <ListItem key={item.id} primaryText={item.name} />)}
+    {items.map((item) => <ListItem key={item.id} primaryText={item.name} />)}
   </List>
 );
 

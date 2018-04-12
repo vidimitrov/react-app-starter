@@ -1,5 +1,5 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import {shallow} from 'enzyme';
 import ListItem from 'material-ui/List/ListItem';
 import List from './';
 
@@ -19,8 +19,10 @@ describe('List component', () => {
   test('to contain list item', () => {
     const list = shallow(<List items={items} />);
     // expect(list.find(ListItem)).to.have.length(2);
-    expect(list.contains(<ListItem key={1} primaryText="Item 1" />)).toBeTruthy();
-    expect(list.contains(<ListItem key={2} primaryText="Item 2" />)).toBeTruthy();
+    expect(list.contains(<ListItem key={1} primaryText="Item 1" />)
+    ).toBeTruthy();
+    expect(list.contains(<ListItem key={2} primaryText="Item 2" />)
+    ).toBeTruthy();
   });
   test('to contain list item, which are clickable', () => {
     const onItemClickAction = () => { };

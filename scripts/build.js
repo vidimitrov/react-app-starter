@@ -1,5 +1,7 @@
 /* eslint global-require: 0 */
 /* eslint import/no-dynamic-require: 0 */
+/* eslint no-console: 0 */
+/* eslint no-undef: 0 */
 
 // Do this as the first thing so that any code reading it knows the right env.
 process.env.BABEL_ENV = 'production';
@@ -23,12 +25,13 @@ const config = require('../config/webpack.config.prod');
 const paths = require('../config/paths');
 const checkRequiredFiles = require('react-dev-utils/checkRequiredFiles');
 const formatWebpackMessages = require('react-dev-utils/formatWebpackMessages');
-const printHostingInstructions = require('react-dev-utils/printHostingInstructions');
+const printHostingInstructions =
+  require('react-dev-utils/printHostingInstructions');
 const FileSizeReporter = require('react-dev-utils/FileSizeReporter');
 const printBuildError = require('react-dev-utils/printBuildError');
 
-const { measureFileSizesBeforeBuild } = FileSizeReporter;
-const { printFileSizesAfterBuild } = FileSizeReporter;
+const {measureFileSizesBeforeBuild} = FileSizeReporter;
+const {printFileSizesAfterBuild} = FileSizeReporter;
 const useYarn = fs.existsSync(paths.yarnLockFile);
 
 // These sizes are pretty large. We'll warn for bundles exceeding them.
@@ -65,8 +68,10 @@ function build(previousFileSizes) {
           process.env.CI.toLowerCase() !== 'false') &&
         messages.warnings.length
       ) {
-        console.log(chalk.yellow('\nTreating warnings as errors because process.env.CI = true.\n' +
-          'Most CI servers set it automatically.\n'));
+        console.log(
+          chalk.yellow(`\nTreating warnings as errors ` +
+            `because process.env.CI = true.\n ` +
+            `Most CI servers set it automatically.\n`));
         return reject(new Error(messages.warnings.join('\n\n')));
       }
       return resolve({
@@ -81,7 +86,7 @@ function build(previousFileSizes) {
 function copyPublicFolder() {
   fs.copySync(paths.appPublic, paths.appBuild, {
     dereference: true,
-    filter: file => file !== paths.appHtml,
+    filter: (file) => file !== paths.appHtml,
   });
 }
 
@@ -97,12 +102,16 @@ measureFileSizesBeforeBuild(paths.appBuild)
     // Start the webpack build
     return build(previousFileSizes);
   })
-  .then(({ stats, previousFileSizes, warnings }) => {
+  .then(({stats, previousFileSizes, warnings}) => {
     if (warnings.length) {
       console.log(chalk.yellow('Compiled with warnings.\n'));
       console.log(warnings.join('\n\n'));
-      console.log(`\nSearch for the ${chalk.underline(chalk.yellow('keywords'))} to learn more about each warning.`);
-      console.log(`To ignore, add ${chalk.cyan('// eslint-disable-next-line')} to the line before.\n`);
+      console.log(`\nSearch for the ` +
+        `${chalk.underline(chalk.yellow('keywords'))}` +
+        ` to learn more about each warning.`);
+      console.log(`To ignore, add` +
+        `${chalk.cyan('// eslint-disable-next-line')}` +
+        ` to the line before.\n`);
     } else {
       console.log(chalk.green('Compiled successfully.\n'));
     }
@@ -113,20 +122,20 @@ measureFileSizesBeforeBuild(paths.appBuild)
       previousFileSizes,
       paths.appBuild,
       WARN_AFTER_BUNDLE_GZIP_SIZE,
-      WARN_AFTER_CHUNK_GZIP_SIZE,
+      WARN_AFTER_CHUNK_GZIP_SIZE
     );
     console.log();
 
     const appPackage = require(paths.appPackageJson);
-    const { publicUrl } = paths;
-    const { publicPath } = config.output;
+    const {publicUrl} = paths;
+    const {publicPath} = config.output;
     const buildFolder = path.relative(process.cwd(), paths.appBuild);
     printHostingInstructions(
       appPackage,
       publicUrl,
       publicPath,
       buildFolder,
-      useYarn,
+      useYarn
     );
   },
   (err) => {

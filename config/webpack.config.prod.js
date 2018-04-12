@@ -1,4 +1,4 @@
-'use strict';
+/* eslint no-undef: 0 */
 
 const autoprefixer = require('autoprefixer');
 const path = require('path');
@@ -19,7 +19,8 @@ const publicPath = paths.servedPath;
 // Some apps do not use client-side routing with pushState.
 // For these, "homepage" can be set to "." to enable relative asset paths.
 const shouldUseRelativeAssetPaths = publicPath === './';
-// Source maps are resource heavy and can cause out of memory issue for large source files.
+// Source maps are resource heavy and can cause out
+// of memory issue for large source files.
 const shouldUseSourceMap = process.env.GENERATE_SOURCEMAP !== 'false';
 // `publicUrl` is just like `publicPath`, but we will provide it to our app
 // as %PUBLIC_URL% in `index.html` and `process.env.PUBLIC_URL` in JavaScript.
@@ -40,10 +41,11 @@ const cssFilename = 'static/css/[name].[contenthash:8].css';
 // ExtractTextPlugin expects the build output to be flat.
 // (See https://github.com/webpack-contrib/extract-text-webpack-plugin/issues/27)
 // However, our output is structured with css, js and media folders.
-// To have this structure working with relative paths, we have to use custom options.
+// To have this structure working with relative paths,
+// we have to use custom options.
 const extractTextPluginOptions = shouldUseRelativeAssetPaths
   ? // Making sure that the publicPath goes back to to build folder.
-    { publicPath: Array(cssFilename.split('/').length).join('../') }
+  {publicPath: Array(cssFilename.split('/').length).join('../')}
   : {};
 
 // This is the production configuration.
@@ -67,14 +69,16 @@ module.exports = {
     chunkFilename: 'static/js/[name].[chunkhash:8].chunk.js',
     // We inferred the "public path" (such as / or /my-project) from homepage.
     publicPath: publicPath,
-    // Point sourcemap entries to original disk location (format as URL on Windows)
-    devtoolModuleFilenameTemplate: info =>
+    // Point sourcemap entries to original disk
+    // location (format as URL on Windows)
+    devtoolModuleFilenameTemplate: (info) =>
       path
         .relative(paths.appSrc, info.absoluteResourcePath)
         .replace(/\\/g, '/'),
   },
   resolve: {
-    // This allows you to set a fallback for where Webpack should look for modules.
+    // This allows you to set a fallback for where Webpack should
+    // look for modules.
     // We placed these paths second because we want `node_modules` to "win"
     // if there are any conflicts. This matches Node resolution mechanism.
     // https://github.com/facebookincubator/create-react-app/issues/253
@@ -90,17 +94,22 @@ module.exports = {
     // for React Native Web.
     extensions: ['.web.js', '.mjs', '.js', '.json', '.web.jsx', '.jsx'],
     alias: {
-      
+
       // Support React Native Web
       // https://www.smashingmagazine.com/2016/08/a-glimpse-into-the-future-with-react-native-for-web/
       'react-native': 'react-native-web',
     },
     plugins: [
-      // Prevents users from importing files from outside of src/ (or node_modules/).
-      // This often causes confusion because we only process files within src/ with babel.
-      // To fix this, we prevent you from importing files out of src/ -- if you'd like to,
-      // please link the files into your node_modules/ and let module-resolution kick in.
-      // Make sure your source files are compiled, as they will not be processed in any way.
+      // Prevents users from importing files from outside of
+      // src/ (or node_modules/).
+      // This often causes confusion because we only process files within
+      // src/ with babel.
+      // To fix this, we prevent you from importing files out of
+      // src/ -- if you'd like to,
+      // please link the files into your node_modules/ and
+      // let module-resolution kick in.
+      // Make sure your source files are compiled,
+      // as they will not be processed in any way.
       new ModuleScopePlugin(paths.appSrc, [paths.appPackageJson]),
     ],
   },
@@ -121,7 +130,7 @@ module.exports = {
             options: {
               formatter: eslintFormatter,
               eslintPath: require.resolve('eslint'),
-              
+
             },
             loader: require.resolve('eslint-loader'),
           },
@@ -149,22 +158,25 @@ module.exports = {
             include: paths.appSrc,
             loader: require.resolve('babel-loader'),
             options: {
-              
+
               compact: true,
             },
           },
           // The notation here is somewhat confusing.
           // "postcss" loader applies autoprefixer to our CSS.
           // "css" loader resolves paths in CSS and adds assets as dependencies.
-          // "style" loader normally turns CSS into JS modules injecting <style>,
+          // "style" loader normally turns CSS into
+          // JS modules injecting <style>,
           // but unlike in development configuration, we do something different.
           // `ExtractTextPlugin` first applies the "postcss" and "css" loaders
           // (second argument), then grabs the result CSS and puts it into a
           // separate file in our build process. This way we actually ship
-          // a single CSS file in production instead of JS code injecting <style>
-          // tags. If you use code splitting, however, any async bundles will still
-          // use the "style" loader inside the async code so CSS from them won't be
-          // in the main CSS file.
+          // a single CSS file in production instead of
+          // JS code injecting <style>
+          // tags. If you use code splitting, however, any async
+          // bundles will still
+          // use the "style" loader inside the async code so CSS from
+          // them won't be in the main CSS file.
           {
             test: /\.css$/,
             loader: ExtractTextPlugin.extract(
@@ -210,7 +222,8 @@ module.exports = {
                 extractTextPluginOptions
               )
             ),
-            // Note: this won't work without `new ExtractTextPlugin()` in `plugins`.
+            // Note: this won't work without `new ExtractTextPlugin()`
+            // in `plugins`.
           },
           // "file" loader makes sure assets end up in the `build` folder.
           // When you `import` an asset, you get its filename.
@@ -219,7 +232,8 @@ module.exports = {
           {
             loader: require.resolve('file-loader'),
             // Exclude `js` files to keep "css" loader working as it injects
-            // it's runtime that would otherwise processed through "file" loader.
+            // it's runtime that would otherwise processed through
+            // "file" loader.
             // Also exclude `html` and `json` extensions so they get processed
             // by webpacks internal loaders.
             exclude: [/\.(js|jsx|mjs)$/, /\.html$/, /\.json$/],
@@ -266,7 +280,8 @@ module.exports = {
     new webpack.optimize.UglifyJsPlugin({
       compress: {
         warnings: false,
-        // Disabled because of an issue with Uglify breaking seemingly valid code:
+        // Disabled because of an issue with Uglify
+        // breaking seemingly valid code:
         // https://github.com/facebookincubator/create-react-app/issues/2376
         // Pending further investigation:
         // https://github.com/mishoo/UglifyJS2/issues/2011
@@ -277,7 +292,8 @@ module.exports = {
       },
       output: {
         comments: false,
-        // Turned on because emoji and regex is not minified properly using default
+        // Turned on because emoji and regex is not minified
+        // properly using default
         // https://github.com/facebookincubator/create-react-app/issues/2488
         ascii_only: true,
       },
@@ -312,7 +328,6 @@ module.exports = {
           // https://github.com/facebookincubator/create-react-app/issues/2612
           return;
         }
-        console.log(message);
       },
       minify: true,
       // For unknown URLs, fallback to the index page

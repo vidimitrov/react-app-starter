@@ -1,5 +1,6 @@
 /* eslint no-param-reassign: ["error", { "props": false }] */
 /* eslint no-console: ["error", { allow: ["log", "error"] }] */
+/* eslint no-undef: 0 */
 
 // In production, we register a service worker to serve assets from local cache.
 
@@ -15,7 +16,8 @@ const isLocalhost = Boolean(window.location.hostname === 'localhost' ||
   // [::1] is the IPv6 localhost address.
   window.location.hostname === '[::1]' ||
   // 127.0.0.1/8 is considered localhost for IPv4.
-  window.location.hostname.match(/^127(?:\.(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)){3}$/));
+  window.location.hostname.match(
+    /^127(?:\.(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)){3}$/));
 
 const registerValidSW = (swUrl) => {
   navigator.serviceWorker
@@ -41,7 +43,8 @@ const registerValidSW = (swUrl) => {
         };
       };
     })
-    .catch(error => console.error('Error during service worker registration:', error));
+    .catch((error) =>
+      console.error('Error during service worker registration:', error));
 };
 
 function checkValidServiceWorker(swUrl) {
@@ -65,7 +68,8 @@ function checkValidServiceWorker(swUrl) {
       }
     })
     .catch(() => {
-      console.log('No internet connection found. App is running in offline mode.');
+      console.log(`No internet connection found.` +
+        ` App is running in offline mode.`);
     });
 }
 
@@ -84,7 +88,8 @@ export default function register() {
       const swUrl = `${process.env.PUBLIC_URL}/service-worker.js`;
 
       if (isLocalhost) {
-        // This is running on localhost. Lets check if a service worker still exists or not.
+        // This is running on localhost.
+        // Lets check if a service worker still exists or not.
         checkValidServiceWorker(swUrl);
 
         // Add some additional logging to localhost, pointing developers to the
@@ -103,6 +108,7 @@ export default function register() {
 
 export function unregister() {
   if ('serviceWorker' in navigator) {
-    navigator.serviceWorker.ready.then(registration => registration.unregister());
+    navigator.serviceWorker.ready.then(
+      (registration) => registration.unregister());
   }
 }

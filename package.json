@@ -9,6 +9,7 @@
     "build-js": "node scripts/build.js",
     "test": "node scripts/test.js --watchAll",
     "lint": "eslint .",
+    "lint-fix": "eslint . --fix",
     "build-css": "node-sass-chokidar src/ -o src/",
     "watch-css": "npm run build-css && node-sass-chokidar src/ -o src/ --watch --recursive"
   },

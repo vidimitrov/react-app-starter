@@ -1,13 +1,16 @@
+/* eslint no-undef: 0 */
+
 const autoprefixer = require('autoprefixer');
 const path = require('path');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CaseSensitivePathsPlugin = require('case-sensitive-paths-webpack-plugin');
 const InterpolateHtmlPlugin = require('react-dev-utils/InterpolateHtmlPlugin');
-const WatchMissingNodeModulesPlugin = require('react-dev-utils/WatchMissingNodeModulesPlugin');
 const eslintFormatter = require('react-dev-utils/eslintFormatter');
 const ModuleScopePlugin = require('react-dev-utils/ModuleScopePlugin');
 const PostCSSFlexbugsFixes = require('postcss-flexbugs-fixes');
+const WatchMissingNodeModulesPlugin =
+  require('react-dev-utils/WatchMissingNodeModulesPlugin');
 const getClientEnvironment = require('./env');
 const paths = require('./paths');
 
@@ -25,8 +28,10 @@ const env = getClientEnvironment(publicUrl);
 // It is focused on developer experience and fast rebuilds.
 // The production configuration is different and lives in a separate file.
 module.exports = {
-  // You may want 'eval' instead if you prefer to see the compiled output in DevTools.
-  // See the discussion in https://github.com/facebookincubator/create-react-app/issues/343.
+  // You may want 'eval' instead if you prefer
+  // to see the compiled output in DevTools.
+  // See the discussion in
+  // https://github.com/facebookincubator/create-react-app/issues/343.
   devtool: 'cheap-module-source-map',
   // These are the "entry points" to our application.
   // This means they will be the "root" imports that are included in JS bundle.
@@ -62,18 +67,21 @@ module.exports = {
     chunkFilename: 'static/js/[name].chunk.js',
     // This is the URL that app is served from. We use "/" in development.
     publicPath,
-    // Point sourcemap entries to original disk location (format as URL on Windows)
-    devtoolModuleFilenameTemplate: info =>
+    // Point sourcemap entries to original
+    // disk location (format as URL on Windows)
+    devtoolModuleFilenameTemplate: (info) =>
       path.resolve(info.absoluteResourcePath).replace(/\\/g, '/'),
   },
   resolve: {
-    // This allows you to set a fallback for where Webpack should look for modules.
+    // This allows you to set a fallback for
+    // where Webpack should look for modules.
     // We placed these paths second because we want `node_modules` to "win"
     // if there are any conflicts. This matches Node resolution mechanism.
     // https://github.com/facebookincubator/create-react-app/issues/253
 
     // It is guaranteed to exist because we tweak it in `env.js`
-    modules: ['node_modules', paths.appNodeModules].concat(process.env.NODE_PATH.split(path.delimiter).filter(Boolean)),
+    modules: ['node_modules', paths.appNodeModules]
+      .concat(process.env.NODE_PATH.split(path.delimiter).filter(Boolean)),
     // These are the reasonable defaults supported by the Node ecosystem.
     // We also include JSX as a common component filename extension to support
     // some tools, although we do not recommend using it, see:
@@ -88,11 +96,16 @@ module.exports = {
       'react-native': 'react-native-web',
     },
     plugins: [
-      // Prevents users from importing files from outside of src/ (or node_modules/).
-      // This often causes confusion because we only process files within src/ with babel.
-      // To fix this, we prevent you from importing files out of src/ -- if you'd like to,
-      // please link the files into your node_modules/ and let module-resolution kick in.
-      // Make sure your source files are compiled, as they will not be processed in any way.
+      // Prevents users from importing files from outside of
+      // src/ (or node_modules/).
+      // This often causes confusion because we only process files within
+      // src/ with babel.
+      // To fix this, we prevent you from importing files out of
+      // src/ -- if you'd like to,
+      // please link the files into your node_modules/ and let
+      // module-resolution kick in.
+      // Make sure your source files are compiled, as they will not be
+      // processed in any way.
       new ModuleScopePlugin(paths.appSrc, [paths.appPackageJson]),
     ],
   },
@@ -126,7 +139,8 @@ module.exports = {
         // back to the "file" loader at the end of the loader list.
         oneOf: [
           // "url" loader works like "file" loader except that it embeds assets
-          // smaller than specified limit in bytes as data URLs to avoid requests.
+          // smaller than specified limit in bytes as data URLs
+          // to avoid requests.
           // A missing `test` is equivalent to a match.
           {
             test: [/\.bmp$/, /\.gif$/, /\.jpe?g$/, /\.png$/],
@@ -142,7 +156,7 @@ module.exports = {
             loader: 'babel-loader',
             exclude: /node_modules/,
             query: {
-                presets: ['react']
+              presets: ['react'],
             },
           },
           // "postcss" loader applies autoprefixer to our CSS.
@@ -182,7 +196,8 @@ module.exports = {
               },
             ],
           },
-          // "file" loader makes sure those assets get served by WebpackDevServer.
+          // "file" loader makes sure those assets get served
+          // by WebpackDevServer.
           // When you `import` an asset, you get its (virtual) filename.
           // In production, they would get copied to the `build` folder.
           // This loader doesn't use a "test" so it will catch all modules
