@@ -26,7 +26,8 @@
         "beforeEach": false,
         "after": false,
         "test": false,
-        "expect": false
+        "expect": false,
+        "jest": true
     },
     "rules": {
         "indent": [
