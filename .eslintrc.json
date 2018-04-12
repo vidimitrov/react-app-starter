@@ -1,5 +1,8 @@
 {
-    "extends": "airbnb",
+    "extends": [
+        "eslint:recommended",
+        "google"
+    ],
     "parser": "babel-eslint",
     "env": {
         "node": true,
