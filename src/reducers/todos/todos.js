@@ -1,6 +1,7 @@
 import {
   ADD_TODO,
   TOGGLE_TODO,
+  RECEIVE_TODOS,
 } from '../../constants/actionTypes';
 
 /**
@@ -31,6 +32,8 @@ export default function todos(state = [], action) {
         }
         return todo;
       });
+    case RECEIVE_TODOS:
+      return action.todos;
     default:
       return state;
   }

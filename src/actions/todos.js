@@ -1,7 +1,9 @@
+import TodosAPI from '../api/todos';
 import {
   ADD_TODO,
   TOGGLE_TODO,
   SET_VISIBILITY_FILTER,
+  RECEIVE_TODOS,
 } from '../constants/actionTypes';
 
 export const VisibilityFilters = {
@@ -27,3 +29,15 @@ export const setVisibilityFilter = (filter) => ({
   type: SET_VISIBILITY_FILTER,
   filter,
 });
+
+export const receiveTodos = (todos) => ({
+  type: RECEIVE_TODOS,
+  todos,
+});
+
+// Action creator using a thunk through the redux-thunk middleware
+export const getAllTodos = () => (dispatch) => {
+  TodosAPI.getTodos((todos) => {
+    dispatch(receiveTodos(todos));
+  });
+};

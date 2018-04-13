@@ -8,6 +8,7 @@ import {createLogger} from 'redux-logger';
 import {routerReducer} from 'react-router-redux';
 import * as reducers from './reducers';
 import Root from './containers/Root';
+import {getAllTodos} from './actions/todos';
 import registerServiceWorker from './registerServiceWorker';
 import './index.css';
 
@@ -28,6 +29,8 @@ export const store = createStore(
       window.devToolsExtension() : (f) => f
   )
 );
+
+store.dispatch(getAllTodos());
 
 ReactDOM.render(
   <Root store={store} />,
