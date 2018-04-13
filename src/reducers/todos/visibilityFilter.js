@@ -1,5 +1,5 @@
+import {SET_VISIBILITY_FILTER} from '../../constants/actionTypes';
 import {
-  SET_VISIBILITY_FILTER,
   VisibilityFilters,
 } from '../../actions/todos';
 const {SHOW_ALL} = VisibilityFilters;
