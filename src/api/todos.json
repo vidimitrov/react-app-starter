@@ -1,0 +1,17 @@
+[
+  {
+    "id": 1,
+    "text": "Go to the supermarket",
+    "completed": false
+  },
+  {
+    "id": 2,
+    "text": "Take the dog for a walk",
+    "completed": false
+  },
+  {
+    "id": 3,
+    "text": "Wake up early",
+    "completed": true
+  }
+]
