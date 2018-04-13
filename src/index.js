@@ -1,18 +1,32 @@
+/* eslint no-undef: 0 */
+
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {Provider} from 'react-redux';
-import {createStore} from 'redux';
-import reducers from './reducers';
-import App from './components/App';
+import {createStore, combineReducers, applyMiddleware, compose} from 'redux';
+import thunk from 'redux-thunk';
+import {routerReducer} from 'react-router-redux';
+import * as reducers from './reducers';
+import Root from './containers/Root';
 import registerServiceWorker from './registerServiceWorker';
 import './index.css';
 
-export const store = createStore(reducers);
+const middlewares = [thunk];
+
+export const store = createStore(
+  combineReducers({
+    ...reducers,
+    routing: routerReducer,
+  }),
+  compose(
+    applyMiddleware(...middlewares),
+    window.devToolsExtension &&
+      process.env.NODE_ENV === 'development' ?
+      window.devToolsExtension() : (f) => f
+  )
+);
 
 ReactDOM.render(
-  <Provider store={store}>
-    <App />
-  </Provider>,
+  <Root store={store} />,
   document.getElementById('root'));
 
 registerServiceWorker();

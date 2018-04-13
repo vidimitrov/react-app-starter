@@ -7,7 +7,9 @@ const TodoList = ({todos, onTodoClick}) => {
     <ul>
       {todos.map((todo, index) => {
         return (
-          <Todo key={index} {...todo} onClick={() => onTodoClick(index)} />
+          <div key={index}>
+            <Todo {...todo} onClick={() => onTodoClick(index)} />
+          </div>
         );
       })}
     </ul>
