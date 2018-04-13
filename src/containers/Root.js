@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import {Provider} from 'react-redux';
 import {BrowserRouter as Router, Route} from 'react-router-dom';
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import App from '../components/App';
 import TodoDetails from './TodoDetails';
 
@@ -14,16 +13,14 @@ import TodoDetails from './TodoDetails';
  */
 
 const Root = ({store}) => (
-  <MuiThemeProvider>
-    <Provider store={store}>
-      <Router>
-        <div>
-          <Route exact={true} path="/" component={App} />
-          <Route path="/:id/details" component={TodoDetails} />
-        </div>
-      </Router>
-    </Provider>
-  </MuiThemeProvider>
+  <Provider store={store}>
+    <Router>
+      <div>
+        <Route exact={true} path="/" component={App} />
+        <Route path="/:id/details" component={TodoDetails} />
+      </div>
+    </Router>
+  </Provider>
 );
 
 Root.propTypes = {
