@@ -8,11 +8,9 @@ import TodoDetails from './TodoDetails';
 
 /**
  * TODO:
- * 1. Load some dummy data through the fetch action
- * 2. Add some basic tests
- * 3. Аdd basic components from the Material UI kit for demo
- * 4. [Optional] Use an App Shell approach
- * 5. [Optional] Make sure that the app is PWA-ready
+ * 1. Аdd basic components from the Material UI kit for demo
+ * 2. [Optional] Use an App Shell approach
+ * 3. [Optional] Make sure that the app is PWA-ready
  */
 
 const Root = ({store}) => (
