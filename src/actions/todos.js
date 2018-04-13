@@ -8,11 +8,15 @@ import {
 
 let nextTodoId = 0;
 
-export const addTodo = (text) => ({
+export const addTodoAction = (text) => ({
   type: ADD_TODO,
   id: nextTodoId++,
   text,
 });
+
+export const addTodo = (text) => (dispatch) => {
+  dispatch(addTodoAction(text));
+};
 
 export const toggleTodo = (id) => ({
   type: TOGGLE_TODO,
