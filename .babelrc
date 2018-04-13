@@ -3,6 +3,10 @@
     "env",
     "react"
   ],
+  "plugins": [
+    "transform-export-extensions",
+    "transform-object-rest-spread"
+  ],
   "env": {
     "test": {
       "presets": [
@@ -10,7 +14,8 @@
         "react"
       ],
       "plugins": [
-        "transform-export-extensions"
+        "transform-export-extensions",
+        "transform-object-rest-spread"
       ],
       "only": [
         "./**/*.js",
