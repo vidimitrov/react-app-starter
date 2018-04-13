@@ -1,13 +1,17 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
+import Button from 'material-ui/Button';
 import {addTodo} from '../actions/todos';
 
 let AddTodo = ({dispatch}) => {
   let input;
 
   return (
-    <div>
+    <div style={{
+      textAlign: 'center',
+      margin: 20,
+    }}>
       <form
         onSubmit={(e) => {
           e.preventDefault();
@@ -18,14 +22,14 @@ let AddTodo = ({dispatch}) => {
           input.value = '';
         }}
       >
-        <input
+        <input style={{height: 38}}
           ref={(node) => {
             input = node;
           }}
         />
-        <button type="submit">
+        <Button variant="raised" color="primary" type="submit">
           Add Todo
-        </button>
+        </Button>
       </form>
     </div>
   );
