@@ -1,21 +1,16 @@
 {
   "presets": [
-    "env",
-    "react"
+    "@babel/preset-env",
+    "@babel/preset-react"
   ],
   "plugins": [
-    "transform-export-extensions",
-    "transform-object-rest-spread"
+    "babel-plugin-styled-components"
   ],
   "env": {
     "test": {
       "presets": [
-        "env",
-        "react"
-      ],
-      "plugins": [
-        "transform-export-extensions",
-        "transform-object-rest-spread"
+        "@babel/preset-env",
+        "@babel/preset-react"
       ],
       "only": [
         "./**/*.js",

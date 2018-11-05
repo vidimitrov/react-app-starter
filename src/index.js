@@ -1,16 +1,12 @@
-/* eslint no-undef: 0 */
-
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {createStore, combineReducers, applyMiddleware, compose} from 'redux';
 import thunk from 'redux-thunk';
-import {createLogger} from 'redux-logger';
-import {routerReducer} from 'react-router-redux';
+import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
+import { createLogger } from 'redux-logger';
+
+import Root from './Root';
 import * as reducers from './reducers';
-import Root from './containers/Root';
-import {getAllTodos} from './actions/todos';
-import registerServiceWorker from './registerServiceWorker';
-import './index.css';
+import * as serviceWorker from './serviceWorker';
 
 const middlewares = [thunk];
 if (process.env.NODE_ENV !== 'production') {
@@ -20,7 +16,6 @@ if (process.env.NODE_ENV !== 'production') {
 export const store = createStore(
   combineReducers({
     ...reducers,
-    routing: routerReducer,
   }),
   compose(
     applyMiddleware(...middlewares),
@@ -30,10 +25,9 @@ export const store = createStore(
   )
 );
 
-store.dispatch(getAllTodos());
-
 ReactDOM.render(
   <Root store={store} />,
-  document.getElementById('root'));
+  document.getElementById('root')
+);
 
-registerServiceWorker();
+serviceWorker.register();
